@@ -108,7 +108,7 @@ python train.py --evaluate
 ```
 ---
 
-## [Presentation](#)
+## [Video Presentation](https://youtu.be/f7_HZEDreXM)
 
 ---
 ## Customization
