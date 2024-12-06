@@ -113,5 +113,5 @@ python train.py --evaluate
 ---
 ## Customization
 
-- Modify custom_env.py to adjust environment parameters like student profiles or budget limits.
+- Modify GrantDistributionOptimization_env.py to adjust environment parameters like student profiles or budget limits.
 - Update train.py to experiment with different hyperparameters (e.g., learning rate, memory size, or policy).
