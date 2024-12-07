@@ -1,6 +1,55 @@
 # Mission-Agent-DQN
 
 Mission-Agent-DQN is a reinforcement learning project that optimizes grant distribution in educational settings using a Deep Q-Network (DQN) agent. The custom environment simulates scenarios where an agent allocates limited funds to maximize educational outcomes while balancing fairness, financial constraints, and long-term impacts.
+## Environment Details
+
+### 1. Environment Grid
+- **Size**: A dynamic “grid” where each row represents a student profile, and columns represent key factors such as academic performance, financial need, household circumstances, and career aspirations.  
+- **Example**: A grid with 100 rows (students) and 4 columns (factors).
+
+### 2. Agent (Allocator)
+- **Role**: The agent represents a decision-making entity tasked with allocating grants.  
+- **Initial State**: Starts with a total budget (e.g., $10,000) and no grants distributed.  
+- **Actions**: Distribute grants to students or allocate nothing.
+
+### 3. Goals (Student Outcomes)
+- **Key Objectives**: Graduation rates, reduced dropout rates, increased career success, and higher student satisfaction.  
+- **Metrics**: Represented as metrics updated after each action. The agent’s goal is to maximize these cumulative metrics.
+
+### 4. Obstacles
+- **Constraints that limit the agent’s decisions**:
+  - **Budget Limit**: Ensures the agent does not allocate more than the available budget.
+  - **Fairness Criteria**: Promotes equitable distribution among students.
+  - **Application Timelines**: Forces the agent to consider students within specific windows for funding.
+
+### 5. State Representation
+- **A vector for each student containing**:
+  - Academic performance (normalized score).
+  - Financial needs (scaled amount).
+  - Household circumstances (numerical features).
+  - Career aspirations (one-hot encoded or numerical representation).
+
+### 6. Reward System
+- **Positive Rewards**: Improving key metrics (e.g., +10 for reduced dropouts).  
+- **Negative Rewards**: Inefficient allocations or unmet constraints (e.g., -5 for exceeding budget).
+
+### 7. Termination Criteria
+- The episode ends when:
+  - The budget is exhausted.
+  - All students have been evaluated.
+  - A predefined number of steps is reached i.e 100
+
+### Example Grid (Environment State)
+
+The table below represents the state of the environment, where each row corresponds to a student profile, and columns capture various factors and grant allocations.
+
+| **Student ID** | **Academic Performance** | **Financial Need** | **Household Dependants** | **Career Aspiration Score** | **Grant Received** |
+|-----------------|--------------------------|---------------------|--------------------------|-----------------------------|--------------------|
+| 1               | 0.85                    | 500                 | 3                        | 0.9                         | 500                |
+| 2               | 0.70                    | 700                 | 2                        | 0.8                         | 700                |
+| 3               | 0.60                    | 1200                | 4                        | 0.7                         | 0                  |
+| 4               | 0.95                    | 300                 | 1                        | 0.95                        | 300                |
+| 5               | 0.40                    | 1500                | 5                        | 0.6                         | 0                  |
 
 ## Actions
 
